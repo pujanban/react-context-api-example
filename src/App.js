@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from "react";
 import "./style.css";
 
-export default function App() {
+const App = () => {
   const ThemeContext = createContext(null);
   const ThemeProvider = props => {
     const [theme, setTheme] = useState("White");
@@ -19,12 +19,16 @@ export default function App() {
 
   const CellOne = () => {
     const { theme } = useContext(ThemeContext);
-    return <div className={`${theme} Base`}>This is {theme} color for Cell One.</div>;
+    return (
+      <div className={`${theme} Base`}>This is {theme} color for Cell One.</div>
+    );
   };
 
   const CellTwo = () => {
     const { theme } = useContext(ThemeContext);
-    return <div className={`${theme} Base`}>This is {theme} color for Cell Two.</div>;
+    return (
+      <div className={`${theme} Base`}>This is {theme} color for Cell Two.</div>
+    );
   };
 
   const ChangeTheme = () => {
@@ -32,7 +36,11 @@ export default function App() {
     const onChangeTheme = () => {
       changeTheme();
     };
-    return <button onClick={onChangeTheme} className="Button">Toggle Theme </button>;
+    return (
+      <button onClick={onChangeTheme} className="Button">
+        Toggle Theme{" "}
+      </button>
+    );
   };
 
   return (
@@ -42,8 +50,10 @@ export default function App() {
           <CellOne />
           <CellTwo />
         </div>
-        <ChangeTheme/>
+        <ChangeTheme />
       </div>
     </ThemeProvider>
   );
-}
+};
+
+export default App;
